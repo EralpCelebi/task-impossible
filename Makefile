@@ -5,8 +5,8 @@ HDRFILES := $(shell find -name "*.h")
 DEPFILES := $(SRCFILES:.c=.d)
 OBJFILES := $(SRCFILES:.c=.o)
 
-CFLAGS ?= -O0 -g
-CFLAGS += -Wall -Wextra -MMD -MP -Iinclude
+CFLAGS ?= -O0 -g -xc
+CFLAGS += -Wall -Wextra -MMD -MP -Iinclude -DDEBUG
 
 LDFLAGS ?=
 LDFLAGS +=

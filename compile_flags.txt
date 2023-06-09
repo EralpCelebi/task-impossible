@@ -1,0 +1,7 @@
+-xc
+-Wall
+-Wextra
+-MMD
+-MP
+-DDEBUG
+-Iinclude
