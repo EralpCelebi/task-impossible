@@ -1,6 +1,7 @@
+#include "slave.h"
 #include "bus.h"
 #include "log.h"
-#include "slave.h"
+
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -57,7 +58,7 @@ bus_store(bus_t* Bus, uint64_t Address, size_t Size, uint64_t Value)
     
     if (!Target)
         {
-            ERROR("Requested store failed, as there are no valid mappings.");
+            ERROR("%s", "Requested store failed, as there are no valid mappings.");
             return;
         }
 
@@ -93,7 +94,7 @@ bus_load(bus_t* Bus, uint64_t Address, size_t Size)
     
     if (!Target)
         {
-            ERROR("Requested store failed, as there are no valid mappings.");
+            ERROR("%s", "Requested store failed, as there are no valid mappings.");
             return -1;
         }
 

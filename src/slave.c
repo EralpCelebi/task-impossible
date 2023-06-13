@@ -35,9 +35,12 @@ slave_store(slave_t* Slave, uint64_t Target, size_t Size, uint64_t Value)
     while(Slave->InUse);
     Slave->InUse = 1;
 
+    if (Size % 2 != 0)
+        WARNING("%s", "Requested memory manipulation is misaligned.");
+
     if (Target + Size > Slave->Address + Slave->Range)
         {
-            ERROR("Requested memory manipulation exceeds available.");
+            ERROR("%s", "Requested memory manipulation exceeds available.");
             return;        
         }
 
@@ -62,9 +65,12 @@ slave_load(slave_t* Slave, uint64_t Source, size_t Size)
     uint64_t Load = 0;
     uint64_t Key = Source - Slave->Address;
 
+    if (Size % 2 != 0)
+        WARNING("%s", "Requested memory manipulation is misaligned.");
+
     if (Source + Size > Slave->Address + Slave->Range)
         {
-            ERROR("Requested memory manipulation exceeds available.");
+            ERROR("%s", "Requested memory manipulation exceeds available.");
             return 0;        
         }
 

@@ -3,9 +3,11 @@
 
 #ifdef DEBUG
 
-#define INFO(Message) fprintf(stderr, "(I) [%s:%d]: %s\n", __FILE__, __LINE__, Message)
-#define WARNING(Message) fprintf(stderr, "(W) [%s:%d]: %s\n", __FILE__, __LINE__, Message)
-#define ERROR(Message) fprintf(stderr, "(E) [%s:%0d]: %s\n", __FILE__, __LINE__, Message)
+#include <stdio.h>
+
+#define INFO(Format, Message) fprintf(stdout, "(I) [%s:%d]: " Format "\n", __FILE__, __LINE__, Message)
+#define WARNING(Format, Message) fprintf(stdout, "(W) [%s:%d]: " Format "\n", __FILE__, __LINE__, Message)
+#define ERROR(Format, Message) fprintf(stderr, "(E) [%s:%0d]: " Format "\n", __FILE__, __LINE__, Message)
 
 #else
 
