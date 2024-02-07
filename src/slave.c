@@ -93,7 +93,7 @@ slave_bind(slave_t* Slave, void* New, size_t Range)
 void
 slave_unbind(slave_t* Slave, size_t Range)
 {
-    while(Slave->InUse);
+    while(Slave->InUse); // TODO: What was I thinking?
     Slave->InUse = 1;
 
     free(Slave->Buffer);
